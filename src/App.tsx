@@ -1,6 +1,6 @@
 
 import { useFakeQuery } from './data/fakeFetchClient';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 import Card from './card';
 import Badge from './badge';
@@ -46,14 +46,14 @@ const App = () => {
   const [card, setCard] = useState<any | null>(null);
   const [input, setInput] = useState<any | null>('');
   const [search, setSearch] = useState<any | null>('');
-  const { data, error, loading } = useFakeQuery('SelectPlayers', {
+  const { data,loading } = useFakeQuery('SelectPlayers', {
     variables: { search: null },
   })
   $('.input').focus()
 
-    const loadCards = () => {
-
-    }
+    // const loadCards = () => {
+    //
+    // }
 
     const render = () => {
     if((data !== null) && (search.state !== null)) {
