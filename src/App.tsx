@@ -125,13 +125,13 @@ const App = () => {
       })
     }
   }
-  const renderSearched = (name) => {
-    name.forEach((user) => {
-      if (user == null) {
-        console.log('NULLL USER', user)
-      }
-    })
-  }
+  // const renderSearched = (name) => {
+  //   name.forEach((user) => {
+  //     if (user == null) {
+  //       console.log('NULLL USER', user)
+  //     }
+  //   })
+  // }
 
 //I was having some difficulty separating handleChange fucntion from the
 ////is still needing work to target each indivdual badge vs changing the color
@@ -151,7 +151,6 @@ const App = () => {
       if (e == null) {
         // renderSearched(name)
         $('#user').hide()
-        // searchAfterTimeout()
         console.log("RENDER NAME ARRAY", name)
       } else if (e !== null){
           // render()
@@ -160,15 +159,6 @@ const App = () => {
       }
     })
   }
-  //
-  // const searchAfterTimeout = () => {
-  //   //employ handleClick after 4 seconds
-  //   //wasn't able to complete this functionality due to search function
-  //   //being inoperable.
-  //   setTimeout(() => {
-  //
-  //   }, 4000)
-  // }
 
   return (
     <div>
