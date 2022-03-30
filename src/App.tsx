@@ -71,7 +71,7 @@ const App = () => {
         let uniqueArray = playerArray.filter(function(item, pos) {
           return playerArray.indexOf(item) === pos
         })
-        //This uniquaArray data, unfortunately, doesn't have any real value,
+        //This uniqueArray data, unfortunately, doesn't have any real value,
         //but I wanted to see if I could get the functionality in place that
         //change the badge color depending on it's value.
 
@@ -110,7 +110,7 @@ const App = () => {
       console.log('Membership Date', memberDate)
 
       return (
-        <li className='card' key={i}>
+        <li id='user' className='card' key={i}>
         <img alt='' src={card.avatar}/><br />
         <div className='name'>{card.fullName}</div><br />
         <div className='membership'>Joined: {card.membershipDate}</div><br />
@@ -125,6 +125,13 @@ const App = () => {
       })
     }
   }
+  const renderSearched = (name) => {
+    name.forEach((user) => {
+      if (user == null) {
+        console.log('NULLL USER', user)
+      }
+    })
+  }
 
 //I was having some difficulty separating handleChange fucntion from the
 ////is still needing work to target each indivdual badge vs changing the color
@@ -132,7 +139,7 @@ const App = () => {
 //the input state - please see React Dev tools state upon triggering logic.
   let playerArray = []
   const handleChange = (e) => {
-    $('li').hide()
+    e.preventDefault()
     let searchInput = e.target.value
     setInput(searchInput)
     setCard(data)
@@ -140,23 +147,28 @@ const App = () => {
       return name.fullName.split(' ').join('').toLowerCase().match(searchInput)
     })
     setSearch(name)
-    if (name !== null) {
-      searchAfterTimeout()
-      console.log("RENDER NAME", name)
-      $('li').show()
-      render()
-    } else {
-      $('li').hide()
-    }
+    name.forEach((e) => {
+      if (e == null) {
+        // renderSearched(name)
+        $('#user').hide()
+        // searchAfterTimeout()
+        console.log("RENDER NAME ARRAY", name)
+      } else if (e !== null){
+          // render()
+        $('#user').show()
+        console.log('not serched')
+      }
+    })
   }
-  const searchAfterTimeout = () => {
-    //employ handleClick after 4 seconds
-    //wasn't able to complete this functionality due to search function
-    //being inoperable.
-    setTimeout(() => {
-
-    }, 4000)
-  }
+  //
+  // const searchAfterTimeout = () => {
+  //   //employ handleClick after 4 seconds
+  //   //wasn't able to complete this functionality due to search function
+  //   //being inoperable.
+  //   setTimeout(() => {
+  //
+  //   }, 4000)
+  // }
 
   return (
     <div>
